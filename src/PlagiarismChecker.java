@@ -29,7 +29,7 @@ public class PlagiarismChecker{
                 }
                 lector.close();          */  
                 line= lector.next();
-                bd.add(line);
+                bd.add(line); // Pruebo extrayendo la primera palabra de cada texto de la bd
             }
             catch (FileNotFoundException e){
                 System.out.print("Error");
