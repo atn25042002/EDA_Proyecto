@@ -8,29 +8,35 @@ public class PlagiarismChecker{
 
     public static void main(String[] args){
         PlagiarismChecker nom = new PlagiarismChecker();
-        nom.loadFiles();
+        String r= "D:\\Semestre_3\\Estructura_de_Datos_Algoritmos\\Proyecto\\EDA_Proyecto\\Bdatos\\texto+.txt";
+        String[] paths= new String[4];
+        for(int i=1; i<= 4; i++){
+            paths[i-1]= r.replace("+", i+"");
+        }
+        nom.loadFiles(paths);
          System.out.println(bd.toString());
     }
-    public boolean loadFiles(){
 
+    public boolean loadFiles(String[] paths){
         String line;
-        try {
-            Scanner lector= new Scanner(new FileReader("D:\\Semestre_3\\Estructura_de_Datos_Algoritmos\\Proyecto\\EDA_Proyecto\\Bdatos\\texto1.txt"));
-            while(lector.hasNextLine()) {
+        for(String path: paths){
+            try {
+                Scanner lector= new Scanner(new FileReader(path));
+                /*while(lector.hasNextLine()) {
+                    line= lector.next();
+                    line= line.replace(",","");
+                    bd.add(line);            
+                }
+                lector.close();          */  
                 line= lector.next();
-                line= line.replace(",","");
                 bd.add(line);
-                System.out.println(line);
-        
             }
-            lector.close();
-           
+            catch (FileNotFoundException e){
+                System.out.print("Error");
+                return false;
+            }
         }
-        catch (FileNotFoundException e){
-            System.out.print("Error");
-            return false;
-        }
-		return false;
+        return false;
     }
 
     public ResultChecker verifyPlagiarism(String path){
