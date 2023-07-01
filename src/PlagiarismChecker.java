@@ -38,6 +38,9 @@ public class PlagiarismChecker{
         }
         return false;
     }
+    public boolean quees(){
+        return true;
+    }
 
     public ResultChecker verifyPlagiarism(String path){
         ResultChecker obj= null;
